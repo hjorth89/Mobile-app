@@ -29,3 +29,8 @@ The `src/integrations` directory now provides OAuth-based clients for services s
 The email helper no longer uses `nodemailer` directly. Instead, it expects a
 backend endpoint to send messages because React Native lacks the Node.js
 modules that `nodemailer` requires.
+
+IMAP access is also not implemented on the device. Packages such as
+`imap-simple` depend on Node core modules like `net` and `tls`, which Metro
+cannot bundle. Fetch messages through a backend service or your provider's HTTP
+API instead of trying to connect over IMAP from the app.
