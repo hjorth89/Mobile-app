@@ -15,4 +15,7 @@ This repository contains a minimal React Native skeleton implementing the basic 
 2. Copy `.env.example` to `.env` and add your `OPENAI_API_KEY`.
 3. Run the Metro bundler with `npm start` and launch on a simulator or device using `npm run ios` or `npm run android`.
 
+
 This code is provided as a starting point and is not production ready.
+
+The `src/integrations` directory now provides OAuth-based clients for services such as Google, Outlook, Dropbox, Google Drive, Slack, Teams and email. Each integration exposes `authenticate`, `fetchData` and `pushData` helpers for obtaining tokens and interacting with the respective APIs.
