@@ -7,6 +7,7 @@ export default function HomeScreen({ navigation }) {
       <Button title="Summarize" onPress={() => navigation.navigate('Summarize')} />
       <Button title="Tasks" onPress={() => navigation.navigate('Tasks')} />
       <Button title="Chat" onPress={() => navigation.navigate('Chat')} />
+      <Button title="Premium" onPress={() => navigation.navigate('Premium')} />
     </View>
   );
 }

@@ -8,6 +8,7 @@ This repository contains a minimal React Native skeleton implementing the basic 
 - **Summarize** – allows text or a URL input, with options for summary length and bullet formatting, then sends it to the OpenAI API.
 - **Tasks** – intelligent task and project management with AI-powered prioritization, automatic breakdown of tasks, reminders and progress tracking.
 - **Chat** – conversational co-pilot with optional voice input and spoken replies.
+- **Premium** – generates proactive insights from your saved tasks using the OpenAI API.
 
 ## Setup
 
