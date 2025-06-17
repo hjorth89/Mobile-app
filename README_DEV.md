@@ -26,3 +26,6 @@ This repository contains a minimal React Native skeleton implementing the basic 
 This code is provided as a starting point and is not production ready.
 
 The `src/integrations` directory now provides OAuth-based clients for services such as Google, Outlook, Dropbox, Google Drive, Slack, Teams and email. Each integration exposes `authenticate`, `fetchData` and `pushData` helpers for obtaining tokens and interacting with the respective APIs.
+The email helper no longer uses `nodemailer` directly. Instead, it expects a
+backend endpoint to send messages because React Native lacks the Node.js
+modules that `nodemailer` requires.

@@ -1,18 +1,22 @@
-import nodemailer from 'nodemailer';
 import imaps from 'imap-simple';
 
+// Nodemailer relies on Node-specific modules that aren't available in React
+// Native. The email integration now expects a backend service to handle
+// sending messages. The `authenticate` helper simply stores configuration
+// details for later use.
+
 export async function authenticate(config = {}) {
-  const transporter = nodemailer.createTransport(config);
-  await transporter.verify();
-  return transporter;
+  // Simply return the configuration. A backend service or another library
+  // should use these details to perform the actual authentication.
+  return config;
 }
 
 export async function fetchData(
-  transporter,
+  config,
   { search = ['ALL'], mailbox = 'INBOX', markSeen = false } = {}
 ) {
-  const { auth = {}, host, port = 993 } = transporter.options || {};
-  const config = {
+  const { auth = {}, host, port = 993 } = config || {};
+  const imapConfig = {
     imap: {
       user: auth.user,
       password: auth.pass,
@@ -23,7 +27,7 @@ export async function fetchData(
     },
   };
 
-  const connection = await imaps.connect(config);
+  const connection = await imaps.connect(imapConfig);
   await connection.openBox(mailbox);
   const messages = await connection.search(search, {
     bodies: ['HEADER', 'TEXT'],
@@ -43,8 +47,18 @@ export async function fetchData(
   });
 }
 
-export async function pushData(transporter, mailOptions) {
-  await transporter.sendMail(mailOptions);
+export async function pushData(config, mailOptions) {
+  if (!config?.sendEndpoint) {
+    throw new Error('Missing sendEndpoint in email configuration');
+  }
+  const response = await fetch(config.sendEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(mailOptions),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to send email');
+  }
   return { success: true };
 }
 
