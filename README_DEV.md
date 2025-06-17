@@ -5,7 +5,7 @@ This repository contains a minimal React Native skeleton implementing the basic 
 ## Available Screens
 
 - **Home** – navigation entry point.
-- **Summarize** – allows text input and sends it to the OpenAI API for summarization.
+- **Summarize** – allows text or a URL input, with options for summary length and bullet formatting, then sends it to the OpenAI API.
 - **Tasks** – local task list management.
 - **Chat** – simple chat interface powered by the OpenAI API.
 
