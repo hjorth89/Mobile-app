@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import HomeScreen from './src/screens/HomeScreen';
 import SummarizeScreen from './src/screens/SummarizeScreen';
 import TasksScreen from './src/screens/TasksScreen';
 import ChatScreen from './src/screens/ChatScreen';
@@ -16,6 +17,7 @@ const Tab = createBottomTabNavigator();
 function MainTabs() {
   return (
     <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Summarize" component={SummarizeScreen} />
       <Tab.Screen name="Tasks" component={TasksScreen} />
       <Tab.Screen name="Chat" component={ChatScreen} />
