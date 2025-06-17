@@ -15,6 +15,8 @@ This repository contains a minimal React Native skeleton implementing the basic 
 
 1. Install dependencies with `npm install` (requires Node.js and React Native CLI). The chat screen uses `react-native-voice`, `react-native-tts` and `@react-native-async-storage/async-storage` for speech and persistence.
 2. Copy `.env.example` to `.env` and add your `OPENAI_API_KEY`.
+   Add Google OAuth credentials (`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
+   `GOOGLE_REDIRECT_URI`) for the onboarding sign in flow.
 3. Run the Metro bundler with `npm start` and launch on a simulator or device using `npm run ios` or `npm run android`.
 
 

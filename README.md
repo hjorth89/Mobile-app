@@ -16,7 +16,7 @@ This UVP emphasizes the core problem it solves (app fatigue, information overloa
 
 A smooth and engaging experience is key to adoption. The app should:
 
-- **Seamless Onboarding:** Offer simple sign in with options like Google or Apple and provide contextual tips so new users find value quickly.
+- **Seamless Onboarding:** Offer real Google OAuth sign in (with optional Apple fallback) and provide contextual tips so new users find value quickly.
 - **Intuitive Navigation & Minimalism:** Present clean layouts with clear labels and a streamlined tab bar or co‑pilot button for easy access.
 - **Gamified Engagement:** Encourage daily habits through productivity streaks and AI mastery badges.
 - **Personalization & Communication:** Send targeted notifications, provide in‑app chat support, and keep users informed about new capabilities.
