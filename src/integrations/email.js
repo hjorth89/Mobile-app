@@ -1,4 +1,7 @@
-import imaps from 'imap-simple';
+// Direct IMAP access is not available in React Native because libraries like
+// `imap-simple` rely on Node core modules such as `net` and `tls`.
+// The email integration therefore delegates fetching messages to a backend
+// service or provider HTTP API.
 
 // Nodemailer relies on Node-specific modules that aren't available in React
 // Native. The email integration now expects a backend service to handle
@@ -11,40 +14,23 @@ export async function authenticate(config = {}) {
   return config;
 }
 
-export async function fetchData(
-  config,
-  { search = ['ALL'], mailbox = 'INBOX', markSeen = false } = {}
-) {
-  const { auth = {}, host, port = 993 } = config || {};
-  const imapConfig = {
-    imap: {
-      user: auth.user,
-      password: auth.pass,
-      host,
-      port,
-      tls: true,
-      authTimeout: 3000,
-    },
-  };
+export async function fetchData(config, params = {}) {
+  if (!config?.fetchEndpoint) {
+    throw new Error('Missing fetchEndpoint in email configuration');
+  }
 
-  const connection = await imaps.connect(imapConfig);
-  await connection.openBox(mailbox);
-  const messages = await connection.search(search, {
-    bodies: ['HEADER', 'TEXT'],
-    markSeen,
+  const res = await fetch(config.fetchEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(params),
   });
-  await connection.end();
 
-  return messages.map(m => {
-    const header = m.parts.find(p => p.which === 'HEADER')?.body || {};
-    const body = m.parts.find(p => p.which === 'TEXT')?.body;
-    return {
-      from: header.from?.[0] || '',
-      subject: header.subject?.[0] || '',
-      date: header.date?.[0] || '',
-      body,
-    };
-  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Failed to fetch mail: ${res.status} ${text}`);
+  }
+
+  return res.json();
 }
 
 export async function pushData(config, mailOptions) {
