@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, FlatList, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, FlatList, Text, StyleSheet, PermissionsAndroid, Platform, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Voice from 'react-native-voice';
 import Tts from 'react-native-tts';
@@ -53,6 +53,15 @@ export default function ChatScreen() {
 
   async function startRecording() {
     try {
+      if (Platform.OS === 'android') {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO
+        );
+        if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+          Alert.alert('Permission required', 'Microphone permission is needed to use voice input.');
+          return;
+        }
+      }
       Voice.onSpeechResults = (e) => {
         const text = e.value?.[0] || '';
         setInput(text);
@@ -61,6 +70,8 @@ export default function ChatScreen() {
       await Voice.start('en-US');
     } catch (e) {
       console.warn('Voice start error', e);
+      Alert.alert('Error', 'Failed to start voice recognition');
+      setIsRecording(false);
     }
   }
 
@@ -69,6 +80,7 @@ export default function ChatScreen() {
       await Voice.stop();
     } catch (e) {
       console.warn('Voice stop error', e);
+      Alert.alert('Error', 'Failed to stop voice recognition');
     }
     setIsRecording(false);
   }
