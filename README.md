@@ -60,7 +60,7 @@ Based on validated insights from Phase 1, the focus shifts to building the core 
 1. **Core Features (MVP):**
     - **AI-powered Text Summarization:** Ability to summarize articles, emails, web pages, and documents.
     - **Basic Task Management:** Features to create, assign, prioritize, and track tasks.
-    - **Simple AI Chatbot:** A conversational interface for answering general queries and providing quick information.
+    - **Simple AI Chatbot:** A conversational interface for answering general queries and providing quick information. Voice input and spoken replies enhance interaction, while conversation context is stored locally for continuity.
     - **Intuitive UI/UX:** Prioritize a seamless and intuitive onboarding process, clean design, and easy navigation to ensure high user retention from the start.
     - **Cross-Platform Compatibility:** Initial development targeting both iOS and Android platforms to maximize reach.
 2. **Technology Stack:**
