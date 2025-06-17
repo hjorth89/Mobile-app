@@ -73,6 +73,10 @@ Based on validated insights from Phase 1, the focus shifts to building the core 
 
 Synapse Pro and Premium unlock seamless connections with services like Google Calendar, Outlook, Dropbox, Google Drive, Slack, Microsoft Teams and popular email providers. OAuth 2.0 authentication keeps user data secure while the app syncs events, files and conversations in near real time. Users can create tasks from emails, summarize cloud documents and manage messaging threads without leaving Synapse AI.
 
+### Premium Feature: Proactive AI Insights and Automation
+
+Synapse Premium adds a proactive layer to the co-pilot experience. Leveraging integrated data and generative AI, the app can analyze upcoming deadlines and communications to surface intelligent meeting prep summaries, personalized learning suggestions and workflow automations. A dedicated screen in the mobile app lets Premium users generate on-demand insights based on their current tasks and connected services.
+
 
 ### Phase 3: Launch and Post-Launch Strategy
 
