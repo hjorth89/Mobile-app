@@ -77,6 +77,10 @@ Synapse Pro and Premium unlock seamless connections with services like Google Ca
 
 Synapse Premium adds a proactive layer to the co-pilot experience. Leveraging integrated data and generative AI, the app can analyze upcoming deadlines and communications to surface intelligent meeting prep summaries, personalized learning suggestions and workflow automations. A dedicated screen in the mobile app lets Premium users generate on-demand insights based on their current tasks and connected services.
 
+### Premium Feature: Personalized Knowledge Base and Information Retrieval
+
+Beyond summarization, Synapse Premium users can build a private, searchable knowledge base from notes, documents and web clippings. The app ingests text or URLs, encrypts them for secure local storage and uses the OpenAI API to answer natural language questions across the saved content. This empowers users to quickly retrieve specific details or broader concepts from their personal information.
+
 
 ### Phase 3: Launch and Post-Launch Strategy
 
