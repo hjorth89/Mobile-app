@@ -1,4 +1,4 @@
-import { URLSearchParams } from 'url';
+import 'react-native-url-polyfill/auto';
 
 export default function createService({ name, authUrl, tokenUrl, baseUrl }) {
   async function getAuthUrl({ clientId, redirectUri, scopes = [], state = '' }) {
